@@ -28,7 +28,7 @@ function StatsDashboard({ stats, subscriptions }) {
           <div className="stat-label">Active Subscriptions</div>
         </div>
         <div className="stat-card">
-          <div className="stat-value">${parseFloat(stats.total_monthly_cost || 0).toFixed(2)}</div>
+          <div className="stat-value">{parseFloat(stats.total_monthly_cost || 0).toFixed(0)}฿</div>
           <div className="stat-label">Total Monthly Cost</div>
         </div>
         <div className="stat-card">
