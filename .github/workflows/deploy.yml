@@ -43,7 +43,20 @@ jobs:
         run: npm run build
 
       - name: Setup Pages
+        id: setup-pages
         uses: actions/configure-pages@v4
+        continue-on-error: true
+
+      - name: Check Pages Configuration
+        if: steps.setup-pages.outcome == 'failure'
+        run: |
+          echo "::error::GitHub Pages is not enabled for this repository."
+          echo "::error::Please enable GitHub Pages manually:"
+          echo "::error::1. Go to Settings → Pages"
+          echo "::error::2. Under 'Build and deployment', select 'GitHub Actions' as the source"
+          echo "::error::3. Click Save"
+          echo "::error::Then re-run this workflow."
+          exit 1
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
