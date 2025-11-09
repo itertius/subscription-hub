@@ -1,0 +1,22 @@
+{
+  "name": "subscription-hub",
+  "version": "1.0.0",
+  "description": "A hub to store and manage subscription payments",
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "start": "./start.sh",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "keywords": ["subscription", "payment", "hub", "management"],
+  "author": "iterrius",
+  "license": "MIT"
+}
+
