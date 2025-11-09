@@ -235,4 +235,4 @@ MIT License - see LICENSE file for details
 
 ## Author
 
-iterrius
+- **iterrius** - [Instagram](https://www.instagram.com/iterrius_te/)
