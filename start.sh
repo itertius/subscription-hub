@@ -8,6 +8,7 @@ export NVM_DIR="$HOME/.nvm"
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
+RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 echo -e "${BLUE}🚀 Starting Subscription Hub...${NC}\n"
@@ -27,6 +28,30 @@ cleanup() {
 
 # Trap Ctrl+C
 trap cleanup INT TERM
+
+# Check and install backend dependencies
+echo -e "${YELLOW}📦 Checking backend dependencies...${NC}"
+cd "$BACKEND_DIR"
+if [ ! -d "node_modules" ]; then
+    echo -e "${YELLOW}Installing backend dependencies...${NC}"
+    npm install
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}❌ Failed to install backend dependencies${NC}"
+        exit 1
+    fi
+fi
+
+# Check and install frontend dependencies
+echo -e "${YELLOW}📦 Checking frontend dependencies...${NC}"
+cd "$FRONTEND_DIR"
+if [ ! -d "node_modules" ]; then
+    echo -e "${YELLOW}Installing frontend dependencies...${NC}"
+    npm install
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}❌ Failed to install frontend dependencies${NC}"
+        exit 1
+    fi
+fi
 
 # Start backend server
 echo -e "${GREEN}📦 Starting backend server...${NC}"
